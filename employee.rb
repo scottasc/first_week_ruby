@@ -55,5 +55,9 @@ p employee_1.first_name.reverse
 
 p employee_1.salary = 1000000
 
+p employee_2.print_info
+
+p employee_1.salary = 6000000
+
 
 
