@@ -1,36 +1,39 @@
-# guitar_1 = {type: "acoustic", color: "sunburst", price: 1000}
-# guitar_2 = {type: "electric", color: "midnight wine", price: 2000}
-# guitar_3 = {:type => "resonator", :color => "black", :price => 3000}
 
 class Guitar
 
-  def initialize(type, color, price)
-    @type = type
-    @color = color
-    @price = price
-  end
+  attr_reader :type, :color, :price
+  attr_writer :price
 
-  def type
-    @type
-  end
-
-  def color
-    @color
-  end
-
-  def price
-    @price
-  end
-
-  def price=(new_value)
-    @price = new_value
+  def initialize(input_options)
+    @type = input_options[:type]
+    @color = input_options[:color]
+    @price = input_options[:price]
   end
 
 end
 
-guitar_1 = Guitar.new("acoustic", "red", 5000)
+class Food < Guitar
+
+  def initialize(shelf_life, input_options)
+    super(input_options)
+    @shelf_life = shelf_life
+  end
+
+
+end
+
+guitar_1 = Guitar.new(
+                      type: "acoustic", 
+                      color: "red", 
+                      price: 5000
+                      )
+
+food_1 = Food.new("10 days", {type: "corn", color: "yellow", price: 5})
+
 puts guitar_1.type
 puts guitar_1.color
 puts guitar_1.price
-guitar_1.price = 10000
+guitar_1.price = 10000000
 puts guitar_1.price
+
+p food_1.@shelf_life
