@@ -75,13 +75,15 @@ manager = Manager.new(
                       employees: [employee_1, employee_2]
                       )
 
-manager.fire_all_employees
-p employee_1.active
-p employee_2.active
+employee_1.print_info
+employee_2.print_info
+manager.give_all_raises
+employee_1.print_info
+employee_2.print_info
 
-array = ["a", "b", "c", "d"]
+# array = ["a", "b", "c", "d"]
 
-array.each do |letter|
-  p letter
-end
+# array.each do |letter|
+#   p letter
+# end
 

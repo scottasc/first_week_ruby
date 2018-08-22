@@ -14,26 +14,31 @@ end
 
 class Food < Guitar
 
-  def initialize(shelf_life, input_options)
-    super(input_options)
-    @shelf_life = shelf_life
-  end
+  attr_reader :shelf_life
 
+  def initialize(input_options)
+    super(input_options)
+    @shelf_life = input_options[:shelf_life]
+  end
 
 end
 
-guitar_1 = Guitar.new(
-                      type: "acoustic", 
-                      color: "red", 
-                      price: 5000
-                      )
+guitar = Guitar.new(
+                    type: "acoustic", 
+                    color: "red", 
+                    price: 5000
+                    )
 
-food_1 = Food.new("10 days", {type: "corn", color: "yellow", price: 5})
+food = Food.new(
+                type: "hot sauce", 
+                color: "green",
+                price: 5,
+                shelf_life: "1 year"
+                )
 
-puts guitar_1.type
-puts guitar_1.color
-puts guitar_1.price
-guitar_1.price = 10000000
-puts guitar_1.price
-
-p food_1.@shelf_life
+p food.price
+p food.price = 10
+p food.color
+p food.shelf_life
+p guitar.price
+p guitar.price = 200

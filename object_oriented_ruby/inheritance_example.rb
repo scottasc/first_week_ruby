@@ -1,8 +1,11 @@
 class Vehicle
 
-  def initialize(speed, direction)
-    @speed = speed
-    @direction = direction
+  attr_reader :speed, :direction
+  attr_writer :turn
+
+  def initialize(input_options)
+    @speed = input_options[:speed]
+    @direction = input_options[:direction]
   end
 
   def brake
@@ -13,19 +16,21 @@ class Vehicle
     @speed += 10
   end
 
-  def turn(new_direction)
-    @direction = new_direction
-  end
+  # def turn=(new_direction)
+  #   @direction = new_direction
+  # end
 
 end
 
 class Car < Vehicle
 
-  def initialize(fuel, make, model, speed, direction)
-    super(speed, direction)
-    @fuel = fuel
-    @make = make
-    @model = model
+  attr_reader :fuel, :make, :model
+
+  def initialize(input_options)
+    super(input_options)
+    @fuel = input_options[:fuel]
+    @make = input_options[:make]
+    @model = input_options[:model]
   end
 
   def honk_horn
@@ -35,11 +40,12 @@ end
 
 class Bike < Vehicle
 
-  def initialize(type, weight, speed, direction)
-    super(speed, direction)
-    @speed = speed
-    @type = type
-    @weight = weight
+  attr_reader :type, :weight
+
+  def initialize(input_options)
+    super(input_options)
+    @type = input_options[:type]
+    @weight = input_options[:weight]
   end
 
   def ring_bell
@@ -47,12 +53,31 @@ class Bike < Vehicle
   end
 end
 
-car = Car.new("diesel", "Ford", "Escort", "Fast", "North")
-vehicle = Vehicle.new("Fast", "South")
-bike = Bike.new("Ten-speed", "50 pounds", "Slow", "East")
+car = Car.new(
+              fuel: "diesel", 
+              make: "Ford", 
+              model: "Escort", 
+              speed: 30, 
+              direction: "north"
+              )
+
+vehicle = Vehicle.new(
+                      speed: 20, 
+                      direction: "south"
+                      )
+
+bike = Bike.new(
+                type: "Ten-speed", 
+                weight: "50 pounds", 
+                speed: 10, 
+                direction: "east"
+                )
 
 
-p car
-p bike
-p vehicle
+p car.make
+p car.model
+car.honk_horn
 
+p bike.type
+p bike.weight
+p bike.turn = "west"
