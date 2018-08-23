@@ -1,3 +1,4 @@
+
 class Vehicle
 
   attr_reader :speed, :direction
@@ -26,11 +27,11 @@ class Car < Vehicle
 
   attr_reader :fuel, :make, :model
 
-  def initialize(input_options)
-    super(input_options)
-    @fuel = input_options[:fuel]
-    @make = input_options[:make]
-    @model = input_options[:model]
+  def initialize(car_options)
+    super(car_options)
+    @fuel = car_options[:fuel]
+    @make = car_options[:make]
+    @model = car_options[:model]
   end
 
   def honk_horn
@@ -42,10 +43,10 @@ class Bike < Vehicle
 
   attr_reader :type, :weight
 
-  def initialize(input_options)
-    super(input_options)
-    @type = input_options[:type]
-    @weight = input_options[:weight]
+  def initialize(bike_options)
+    super(bike_options)
+    @type = bike_options[:type]
+    @weight = bike_options[:weight]
   end
 
   def ring_bell
@@ -54,7 +55,7 @@ class Bike < Vehicle
 end
 
 car = Car.new(
-              fuel: "diesel", 
+              fuel: 10, 
               make: "Ford", 
               model: "Escort", 
               speed: 30, 
@@ -74,10 +75,13 @@ bike = Bike.new(
                 )
 
 
-p car.make
-p car.model
-car.honk_horn
 
-p bike.type
-p bike.weight
-p bike.turn = "west"
+p car
+
+# p car.make
+# p car.model
+# car.honk_horn
+
+# p bike.type
+# p bike.weight
+# p bike.turn = "west"
